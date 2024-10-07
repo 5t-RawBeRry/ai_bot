@@ -1,0 +1,34 @@
+{
+	"name": "a_bot",
+	"version": "0.0.0",
+	"main": "src/bot.ts",
+	"scripts": {
+		"start": "bun run src/bot.ts",
+		"dev": "DEBUG=\"grammy*\" bun run src/bot.ts",
+		"build": "bun build src/bot.ts --outfile ./dist/a_bot --compile --minify --sourcemap",
+		"build:win": "bun build src/bot.ts --outfile ./dist/a_bot-win-x64.exe --target=bun-windows-x64-modern --compile --minify --sourcemap",
+		"build:linux": "bun build src/bot.ts --outfile ./dist/a_bot-linux-x64 --target=bun-linux-x64-modern --compile --minify --sourcemap && bun build src/bot.ts --outfile ./dist/a_bot-linux-arm64 --target=bun-linux-arm64-modern --compile --minify --sourcemap",
+		"build:mac": "bun build src/bot.ts --outfile ./dist/a_bot-macos-x64 --target=bun-macos-x64-modern --compile --minify --sourcemap && bun build src/bot.ts --outfile ./dist/a_bot-macos-arm64 --target=bun-macos-arm64-modern --compile --minify --sourcemap",
+		"build:all": "bun run build:win && bun run build:linux && bun run build:mac"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.6.2"
+	},
+	"dependencies": {
+		"@grammyjs/auto-retry": "^2.0.2",
+		"@grammyjs/conversations": "^1.2.0",
+		"@grammyjs/emoji": "^1.2.0",
+		"@grammyjs/hydrate": "^1.4.1",
+		"@grammyjs/parse-mode": "^1.10.0",
+		"@grammyjs/runner": "^2.0.3",
+		"dotenv": "^16.4.5",
+		"grammy": "^1.30.0",
+		"ollama": "^0.5.9"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}
